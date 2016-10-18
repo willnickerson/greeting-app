@@ -1,13 +1,28 @@
 'use strict';
+var emoji = require('node-emoji');
+var greetingObj = {};
 
-function greet(name){
+greetingObj.greet = function(hour, name) {
   name = name || 'nameless human';
-  var greeting = 'hello,';
-  var combined = greeting + ' ' + name;
+  var greeting;
+  var icon;
+  if(hour < 12) {
+    greeting = 'Goodmorning,';
+    icon = emoji.get('sun_with_face');
+  } else {
+    greeting = 'Goodevening,';
+    icon = emoji.get('full_moon_with_face');
+  }
+  var combined = greeting + ' ' + name + ' ' + icon;
   return combined;
-}
+};
 
-console.log(process.argv);
-console.log(greet(process.argv[2]));
+greetingObj.timeOfDay = function()  {
+  var date = new Date;
+  var hours = date.getHours();
+  return hours;
+};
 
-module.exports = greet;
+console.log(greetingObj.greet(greetingObj.timeOfDay(), process.argv[2]));
+
+module.exports = greetingObj;

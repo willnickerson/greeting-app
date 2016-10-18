@@ -1,0 +1,30 @@
+{
+  "name": "greeting-app",
+  "version": "1.0.0",
+  "description": "greeting app",
+  "main": "index.js",
+  "scripts": {
+    "pretest": "npm run lint",
+    "test": "mocha",
+    "test:watch": "mocha -w",
+    "lint": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/willnickerson/greeting-app.git"
+  },
+  "author": "Will Nickerson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/willnickerson/greeting-app/issues"
+  },
+  "homepage": "https://github.com/willnickerson/greeting-app#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "eslint": "^3.8.1",
+    "mocha": "^3.1.2"
+  },
+  "dependencies": {
+    "node-emoji": "^1.4.1"
+  }
+}

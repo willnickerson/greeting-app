@@ -1,23 +1,16 @@
 'use strict';
 var assert = require('assert');
-var greet = require('./greet');
+var greetingObj = require('./greet');
+var emoji = require('node-emoji');
 
 
 describe('greeting', function() {
-  it('greets with name', function() {
-    var greeting = greet('tester');
-    assert.equal(greeting, 'hello, tester');
+  it('greets with name in the evening', function() {
+    var greeting = greetingObj.greet(23, 'tester');
+    assert.equal(greeting, 'Goodevening, tester ' + emoji.get('full_moon_with_face'));
   });
-  it('greets with no name', function() {
-    var greeting = greet();
-    assert.equal(greeting, 'hello, nameless human');
+  it('greets with no name in the morning', function() {
+    var greeting = greetingObj.greet(5);
+    assert.equal(greeting, 'Goodmorning, nameless human ' + emoji.get('sun_with_face'));
   });
 });
-
-//I do not believe this test is neccesary
-// describe('greeting', function() {
-//   it('greets with input', function() {
-//     process.argv[2] = 'tester';
-//     assert(greet(process.argv[2]) == 'hello, tester');
-//   });
-// });
