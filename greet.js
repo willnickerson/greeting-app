@@ -1,11 +1,27 @@
 'use strict';
+
+const readline = require('readline');
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
 var emoji = require('node-emoji');
 var greetingObj = {};
+
+greetingObj.askName = function() {
+  rl.question('Hi, what is your name? ', function(answer) {
+    console.log(greetingObj.greet(greetingObj.timeOfDay(), answer));
+    greetingObj.response();
+  });
+}
 
 greetingObj.greet = function(hour, name) {
   name = name || 'nameless human';
   var greeting;
   var icon;
+
   if(hour < 12) {
     greeting = 'Goodmorning,';
     icon = emoji.get('sun_with_face');
@@ -23,6 +39,15 @@ greetingObj.timeOfDay = function()  {
   return hours;
 };
 
-console.log(greetingObj.greet(greetingObj.timeOfDay(), process.argv[2]));
+greetingObj.response = function() {
+  rl.question('How are you doing? ', function(answer) {
+    var response = 'Cool! Im doing ' + answer + ' too.';
+    rl.close();
+    console.log(response);
+    return response;
+  });
+};
+
+greetingObj.askName();
 
 module.exports = greetingObj;
