@@ -15,6 +15,13 @@ greetingObj.askName = function() {
     console.log(greetingObj.greet(greetingObj.timeOfDay(), answer));
     greetingObj.response();
   });
+};
+
+greetingObj.getInput = function(questionString) {
+  rl.question(questionString, function(answer) {
+    console.log(answer);
+    return answer();
+  })
 }
 
 greetingObj.greet = function(hour, name) {
