@@ -21,8 +21,8 @@ greetingObj.getInput = function(questionString) {
   rl.question(questionString, function(answer) {
     console.log(answer);
     return answer();
-  })
-}
+  });
+};
 
 greetingObj.greet = function(hour, name) {
   name = name || 'nameless human';
